@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Rainbow Background</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height:100vh;
+            width:auto;
+            color:white;
+            margin:auto;
+            background: linear-gradient( to right, red,orange,yellow,blue,violet,green,indigo);
+            background-size:400% 400%;
+            box-shadow: 2px 2px 5px black;
+            text-align: center;
+            font-size: 27px;
+            font-weight: bold;
+            justify-content: center;
+            animation: rainbow 6s infinite linear;
+        }
+        input{
+            border: 10%;
+            border-radius: 2px solid red;
+            text-align: center;
+            padding: 10px;
+            width:40%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            background-color: pink;
+            font-size: 18px;
+        }
+        button{
+            border-radius: 5px solid black;
+            background-color: rebeccapurple;
+            font-size: 18px;
+            margin-top: 10px;
+            padding: 10px 10px;
+            font-weight: bold;
+            color: white;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        button:hover{
+           background-color: blue;
+        }
+        #result{
+            margin-top: 20px;
+            font-size: 20px;
+
+        }
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <h1>LEAP YEAR CALCULATOR</h1>
+    <input type="number" id="input1" placeholder="Enter the year">
+    <button onclick="Leapyear()">Check Leap Year Here</button>
+    <p id="result"></p>
+    <script>
+        function Leapyear(){
+            var year=document.getElementById("input1").value;
+            var resultText =" ";
+            if(year===""){
+                resultText="please enter the year!";
+            }else{
+                year = parseInt(year);
+                if((year%4 === 0 && year%100 !== 0)||year%400 === 0){
+                resultText = `✅ Yes, ${year} is a leap year!`;
+            } else {
+                resultText=`❌ No, ${year} is NOT a leap year.`;
+            }
+            }
+                document.getElementById("result").innerText = resultText;
+        }
+    </script>
+</body>
+</html>
+
